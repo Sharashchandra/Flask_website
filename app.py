@@ -2,12 +2,9 @@ from flask import Flask, render_template, flash, redirect, session, url_for, log
 from passlib.hash import sha256_crypt
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user, current_user
 from flask_sqlalchemy import SQLAlchemy
-from flask_paranoid import Paranoid
 import os
 
 app = Flask(__name__)
-paranoid = Paranoid(app)
-paranoid.redirect_view = '/'
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'signin'
