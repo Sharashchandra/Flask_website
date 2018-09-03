@@ -1,0 +1,27 @@
+{% if current_user.is_authenticated %}
+{% set var = '/home' %}
+{% else %}
+{% set var = '/' %}
+{% endif %}
+<nav class="navbar navbar-expand-sm navbar-default" style="font-size: 25px; padding: 20px 50px;">
+  <a class="navbar-brand" href={{ var }}><h1>YaRn!!</h1></a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      {% if current_user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="logout">Log Out</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="signin">Sign In <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="signup">Sign Up</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+<hr>
+
+<!--https://work.smarchal.com/twbscolor/4.0.0/css/e52525f2403aecf0f1ecdbff0-->
