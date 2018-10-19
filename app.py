@@ -17,7 +17,7 @@ REMEMBER_COOKIE_HTTPONLY = True
 
 #Configure SQLAlchemy
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///D:\\FlaskApp\\database\\flask.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/zkull/Desktop/Flask_website/database/flask.db'
 
 #Initialize SQLAlchemy
 db = SQLAlchemy(app)
