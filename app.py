@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, redirect, session, url_for, logging, request
 from passlib.hash import sha256_crypt
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user, current_user
-from flask_sqlalchemy import SQLAlchemy
+from pymongo import MongoClient
 import os
 
 app = Flask(__name__)
@@ -15,18 +15,13 @@ REMEMBER_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 REMEMBER_COOKIE_HTTPONLY = True
 
+#Initialize Pymongo
+client = MongoClient()
+
 #Configure SQLAlchemy
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/zkull/Desktop/Flask_website/database/flask.db'
-
-#Initialize SQLAlchemy
-db = SQLAlchemy(app)
-
-class User(UserMixin, db.Model):
-	id = db.Column(db.INTEGER, primary_key=True)
-	name = db.Column(db.String(25))
-	email = db.Column(db.String(50), unique=True)
-	password = db.Column(db.String(80))
+db = client['rvce-hackathon']
+users = db.users
 
 @login_manager.user_loader
 def load_user(user_id):
